@@ -5,10 +5,10 @@ $(function () {
   var todos = [];
 
   var todoTemp = _.template($("#todoTemp").html())
-  
+
   $.get("/todos").
       done(function (todos) {
-          
+
         _(todos).each(function (todo) {
             var $todo = $(todoTemp(todo))
             $todo.data("index", todo.index);
@@ -42,6 +42,7 @@ $(function () {
 
   });
 
+  //EVENT DELEGATION
   $todosCon.on("click", ".todoCon .delete", function (e) {
     var $todo = $(this).closest(".todoCon");
     var index = $todo.data("index");
